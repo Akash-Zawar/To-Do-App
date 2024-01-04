@@ -39,6 +39,17 @@ const ToDoListDisplay = ({ createFlag }) => {
     setDisplayData([...updatedData]);
   };
 
+  const onCheckboxChange = (taskId) => {
+    const updatedData = displayData.map((item) => {
+      if (item.id === taskId) {
+        return { ...item, completed: !item.completed };
+      }
+      return item;
+    });
+    localStorage.setItem("toDoList", JSON.stringify(updatedData));
+    setDisplayData([...updatedData]);
+  };
+
   console.log(displayData);
   return (
     <>
@@ -47,8 +58,17 @@ const ToDoListDisplay = ({ createFlag }) => {
           return (
             <div key={index}>
               {!list.editing ? (
-                <div className="flex gap-2">
-                  <p className="bg-slate-200 w-72 p-2 rounded-xl">
+                <div className="flex gap-2 items-center ">
+                  <input
+                    type="checkbox"
+                    checked={list.completed}
+                    onChange={() => onCheckboxChange(list.id)}
+                    className="form-checkbox text-indigo-600 h-5 w-5"
+                  />
+                  <p
+                    className={`bg-slate-200 w-72 p-2 rounded-xl ${
+                      list.completed ? "line-through" : ""
+                    }`}>
                     {list.task}
                   </p>
                   <button onClick={() => onEditClick(list.id)}>✏️</button>
