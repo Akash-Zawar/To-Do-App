@@ -30,6 +30,7 @@ const InputForm = () => {
       <div className="flex justify-center items-center gap-4">
         <div>
           <input
+            placeholder="Enter your today's task"
             type="text"
             value={toDoData}
             onChange={onDataInput}

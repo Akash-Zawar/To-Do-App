@@ -66,7 +66,7 @@ const ToDoListDisplay = ({ createFlag }) => {
                     className="form-checkbox text-indigo-600 h-5 w-5"
                   />
                   <p
-                    className={`bg-slate-200 w-72 p-2 rounded-xl ${
+                    className={`bg-blue-200 min-w-96 p-2 rounded-xl ${
                       list.completed ? "line-through" : ""
                     }`}>
                     {list.task}
